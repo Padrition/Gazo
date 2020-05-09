@@ -3,6 +3,7 @@ package com.padrition.gazo.ImageClasses;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
@@ -17,7 +18,7 @@ public class ImageBuilder {
     public ImageBuilder(){}
     
     //set later to return the File
-    public void generateImageWithRandomColors()throws IOException{
+    public byte[] generateImageWithRandomColors()throws IOException{
         BufferedImage bufferedImage = new BufferedImage(width , height , BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = bufferedImage.createGraphics();
         
@@ -31,8 +32,10 @@ public class ImageBuilder {
         }
         g2d.dispose();
 
-        File file = new File("FullyRandom.png");
-        ImageIO.write(bufferedImage, "png" , file);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(bufferedImage, "png" , baos);
+        baos.flush();
+        return baos.toByteArray();
     }
     
     public void generateImageWithRandomColors(int sizeOfBox)throws IOException{
