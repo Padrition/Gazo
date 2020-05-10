@@ -107,7 +107,7 @@ public class ImageBuilder {
     public byte[] generateImageWithCertainColors(Color...colors)throws IOException{
         BufferedImage bufferedImage = new BufferedImage(width , height , BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = bufferedImage.createGraphics();
-        
+
         for(int y = 0; y <= height; y += 5){
             for(int x = 0; x <=width; x += 5){
                 int i = (int)(Math.random()*colors.length);
