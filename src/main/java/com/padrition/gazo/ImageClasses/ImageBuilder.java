@@ -4,12 +4,13 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class ImageBuilder {
 
     private static final int width = 200;
@@ -17,7 +18,6 @@ public class ImageBuilder {
 
     public ImageBuilder(){}
     
-    //set later to return the File
     public byte[] generateImageWithRandomColors()throws IOException{
         BufferedImage bufferedImage = new BufferedImage(width , height , BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = bufferedImage.createGraphics();
@@ -38,7 +38,7 @@ public class ImageBuilder {
         return baos.toByteArray();
     }
     
-    public void generateImageWithRandomColors(int sizeOfBox)throws IOException{
+    public byte[] generateImageWithRandomColors(int sizeOfBox)throws IOException{
         BufferedImage bufferedImage = new BufferedImage(width , height , BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = bufferedImage.createGraphics();
         
@@ -52,11 +52,13 @@ public class ImageBuilder {
         }
         g2d.dispose();
 
-        File file = new File("FullyRandom.png");
-        ImageIO.write(bufferedImage, "png" , file);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(bufferedImage, "png" , baos);
+        baos.flush();
+        return baos.toByteArray();
     }
 
-    public void generateImageWithNumberOfColors(int numberOfColors)throws IOException{
+    public byte[] generateImageWithNumberOfColors(int numberOfColors)throws IOException{
         BufferedImage bufferedImage = new BufferedImage(width , height , BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = bufferedImage.createGraphics();
 
@@ -73,11 +75,13 @@ public class ImageBuilder {
         }
         g2d.dispose();
 
-        File file = new File("WithSomeColors.png");
-        ImageIO.write(bufferedImage, "png" , file);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(bufferedImage, "png" , baos);
+        baos.flush();
+        return baos.toByteArray();
     }
 
-    public void generateImageWithNumberOfColors(int numberOfColors , int sizeOfBox)throws IOException{
+    public byte[] generateImageWithNumberOfColors(int numberOfColors , int sizeOfBox)throws IOException{
         BufferedImage bufferedImage = new BufferedImage(width , height , BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = bufferedImage.createGraphics();
 
@@ -94,11 +98,13 @@ public class ImageBuilder {
         }
         g2d.dispose();
 
-        File file = new File("WithSomeColors.png");
-        ImageIO.write(bufferedImage, "png" , file);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(bufferedImage, "png" , baos);
+        baos.flush();
+        return baos.toByteArray();
     }
 
-    public void generateImageWithCertainColors(Color...colors)throws IOException{
+    public byte[] generateImageWithCertainColors(Color...colors)throws IOException{
         BufferedImage bufferedImage = new BufferedImage(width , height , BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = bufferedImage.createGraphics();
         
@@ -111,11 +117,13 @@ public class ImageBuilder {
         }
         g2d.dispose();
 
-        File file = new File("WithCertainColors.png");
-        ImageIO.write(bufferedImage, "png" , file);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(bufferedImage, "png" , baos);
+        baos.flush();
+        return baos.toByteArray();
     }
 
-    public void generateImageWithCertainColors(int sizeOfBox , Color...colors)throws IOException{
+    public byte[] generateImageWithCertainColors(int sizeOfBox , Color...colors)throws IOException{
         BufferedImage bufferedImage = new BufferedImage(width , height , BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = bufferedImage.createGraphics();
         
@@ -128,8 +136,10 @@ public class ImageBuilder {
         }
         g2d.dispose();
 
-        File file = new File("WithCertainColors.png");
-        ImageIO.write(bufferedImage, "png" , file);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(bufferedImage, "png" , baos);
+        baos.flush();
+        return baos.toByteArray();
     }
 
     private Color getRandomColor(){
