@@ -48,5 +48,10 @@ public class RestGazoController {
         return imageBuilder.generateImageWithNumberOfColors(numberOfColors , sizeOfBox);
     }
 
-    
+    @GetMapping(
+        value= "/generateImageWithCertainColors/{colorsLine}",
+        produces = MediaType.IMAGE_PNG_VALUE)
+    public byte[] getGenerateImageWithCertainColors(@PathVariable("colorsLine")String colorsLine)throws IOException{
+            return imageBuilder.generateImageWithCertainColors(imageBuilder.obtainColorsFromString(colorsLine));
+    }
 }
