@@ -142,6 +142,20 @@ public class ImageBuilder {
         return baos.toByteArray();
     }
 
+    public Color[] obtainColorsFromString(String stringOfColors){
+            String[] colorsArray = stringOfColors.split(",");
+            Color[] colors = new Color[colorsArray.length];
+            for(int i = 0;i < colors.length;i++){
+                int[] RGB = new int[3];
+                String[] stringRGB = colorsArray[i].split("_");
+                for(int j = 0; j < RGB.length;j++){
+                    RGB[j] = Integer.parseInt(stringRGB[j]);
+                }
+                colors[i] = new Color(RGB[0],RGB[1],RGB[2]);
+            }
+        return colors;
+    }
+
     private Color getRandomColor(){
         int R = (int)(Math.random()*256);
         int G = (int)(Math.random()*256);
