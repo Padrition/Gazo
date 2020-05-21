@@ -1,18 +1,14 @@
 $(document).ready(function(){
-    fire_ajax();
+    
+    obtain_an_image();
+
+    $("#generateImageWithRandomColors").submit(function(event){
+        event.preventDefault();
+
+        obtain_an_image();
+    });
 });
-function fire_ajax(){
+
+function obtain_an_image(){
     document.getElementById("theImage").src = "/generateImageWithRandomColors";
 };
-
-// $.ajax({
-//     type : "GET",
-//     datatype : "image/png",
-//     url : "/generateImageWithRandomColors",
-//     succsess : function(data){
-
-//     },
-//     error : function (){
-//         console.log("error");
-//     }
-// });
