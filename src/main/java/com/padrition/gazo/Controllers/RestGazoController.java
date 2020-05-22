@@ -36,7 +36,7 @@ public class RestGazoController {
         value = "/generateImageWithNumberOfColors{numberOfColors}",
         produces = MediaType.IMAGE_PNG_VALUE
     )
-    public byte[] gGenerateImageWithNumberOfColors(@PathVariable("numberOfColors")int numberOfColors)throws IOException{
+    public byte[] getGenerateImageWithNumberOfColors(@PathVariable("numberOfColors")int numberOfColors)throws IOException{
         return imageBuilder.generateImageWithNumberOfColors(numberOfColors);
     }
 
@@ -44,7 +44,7 @@ public class RestGazoController {
         value = "/generateImageWithNumberOfColors{numberOfColors}/{sizeOfBox}",
         produces = MediaType.IMAGE_PNG_VALUE
     )
-    public byte[] gGenerateImageWithNumberOfColors(@PathVariable("numberOfColors")int numberOfColors,@PathVariable("sizeOfBox")int sizeOfBox)throws IOException{
+    public byte[] getGenerateImageWithNumberOfColors(@PathVariable("numberOfColors")int numberOfColors,@PathVariable("sizeOfBox")int sizeOfBox)throws IOException{
         return imageBuilder.generateImageWithNumberOfColors(numberOfColors , sizeOfBox);
     }
 
