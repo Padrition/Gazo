@@ -1,14 +1,24 @@
 $(document).ready(function(){
     
-    obtain_an_image();
+    generateImageWithRandomColors();
 
     $("#generateImageWithRandomColors").submit(function(event){
         event.preventDefault();
 
-        obtain_an_image();
+        generateImageWithRandomColors();
+    });
+    $("#generateImageWithRandomColorsFixedSize").submit(function(event){
+        event.preventDefault();
+
+        generateImageWithRandomColorsFixedSize();
     });
 });
 
-function obtain_an_image(){
+function generateImageWithRandomColors(){
     document.getElementById("theImage").src = "/generateImageWithRandomColors";
 };
+
+function generateImageWithRandomColorsFixedSize(){
+    var size = $("#generateImageWithRandomColorsFixedSizeRange").val();
+    document.getElementById("theImage").src = "/generateImageWithRandomColors/"+size;
+}
