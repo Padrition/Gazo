@@ -15,12 +15,17 @@ $(document).ready(function(){
     $("#generateImageWithCertainNumberOfColors").submit(function(event){
         event.preventDefault();
 
-        getGenerateImageWithNumberOfColors();
+        generateImageWithNumberOfColors();
     });
     $("#generateImageWithCertainNumberOfColorsFixedSize").submit(function(event){
         event.preventDefault();
 
-        getGenerateImageWithNumberOfColorsFixedSize()();
+        generateImageWithNumberOfColorsFixedSize()();
+    });
+    $("#generateImageWithCertainColors").submit(function(event){
+        event.preventDefault();
+
+        generateImageWithCertainColors();
     });
 });
 
@@ -29,17 +34,22 @@ function generateImageWithRandomColors(){
 };
 
 function generateImageWithRandomColorsFixedSize(){
-    var size = $("#generateImageWithRandomColorsFixedSizeRange").val();
+    let size = $("#generateImageWithRandomColorsFixedSizeRange").val();
     document.getElementById("theImage").src = "/generateImageWithRandomColors/"+size;
 };
 
-function getGenerateImageWithNumberOfColors(){
-    var numberOfColors = $("#generateImageWithCertainNumberOfColorsRange").val();
+function generateImageWithNumberOfColors(){
+    let numberOfColors = $("#generateImageWithCertainNumberOfColorsRange").val();
     document.getElementById("theImage").src = "/generateImageWithNumberOfColors" + numberOfColors;
 };
 
-function getGenerateImageWithNumberOfColorsFixedSize(){
-    var numberOfColors = $("#generateImageWithCertainNumberOfColorsFixedSizeColorRange").val();
-    var size = $("#generateImageWithCertainNumberOfColorsFixedSizeSizeRange").val();
+function generateImageWithNumberOfColorsFixedSize(){
+    let numberOfColors = $("#generateImageWithCertainNumberOfColorsFixedSizeColorRange").val();
+    let size = $("#generateImageWithCertainNumberOfColorsFixedSizeSizeRange").val();
     document.getElementById("theImage").src = "/generateImageWithNumberOfColors" + numberOfColors + "/" + size;
+};
+
+function generateImageWithCertainColors(){
+    let colors = $("#generateImageWithCertainColorsColorLine").val();
+    document.getElementById("theImage").src = "/generateImageWithCertainColors/" + colors;
 };
