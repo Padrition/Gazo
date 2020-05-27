@@ -27,6 +27,11 @@ $(document).ready(function(){
 
         generateImageWithCertainColors();
     });
+    $("#generateImageWithCertainColorsFixedSize").submit(function(event){
+        event.preventDefault();
+
+        generateImageWithCertainColorsFixedSize();
+    });
 });
 
 function generateImageWithRandomColors(){
@@ -53,3 +58,9 @@ function generateImageWithCertainColors(){
     let colors = $("#generateImageWithCertainColorsColorLine").val();
     document.getElementById("theImage").src = "/generateImageWithCertainColors/" + colors;
 };
+
+function generateImageWithCertainColorsFixedSize(){
+    let colors = $("#generateImageWithCertainColorsFixedSizeColorLine").val();
+    let size = $("#generateImageWithCertainColorsFixedSizeSizeRange").val();
+    document.getElementById("theImage").src = "/generateImageWithCertainColors/"+colors+"/"+size;
+}
