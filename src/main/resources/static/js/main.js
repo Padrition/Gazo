@@ -17,6 +17,11 @@ $(document).ready(function(){
 
         getGenerateImageWithNumberOfColors();
     });
+    $("#generateImageWithCertainNumberOfColorsFixedSize").submit(function(event){
+        event.preventDefault();
+
+        getGenerateImageWithNumberOfColorsFixedSize()();
+    });
 });
 
 function generateImageWithRandomColors(){
@@ -31,4 +36,10 @@ function generateImageWithRandomColorsFixedSize(){
 function getGenerateImageWithNumberOfColors(){
     var numberOfColors = $("#generateImageWithCertainNumberOfColorsRange").val();
     document.getElementById("theImage").src = "/generateImageWithNumberOfColors" + numberOfColors;
+};
+
+function getGenerateImageWithNumberOfColorsFixedSize(){
+    var numberOfColors = $("#generateImageWithCertainNumberOfColorsFixedSizeColorRange").val();
+    var size = $("#generateImageWithCertainNumberOfColorsFixedSizeSizeRange").val();
+    document.getElementById("theImage").src = "/generateImageWithNumberOfColors" + numberOfColors + "/" + size;
 };
